@@ -29,7 +29,7 @@
 ### Voice Waveform Interface
 
 <p align="center">
-  <img src="./docs/assets/waveform.png" alt="SpeakFlow Waveform" width="800"/>
+  <img src="./docs/assets/architecture.png" alt="SpeakFlow Architecture" width="800"/>
 </p>
 
 *Real-time voice activity detection with modern glassmorphism design*
