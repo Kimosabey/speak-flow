@@ -133,12 +133,14 @@ graph LR
 
 ---
 
-## License
+## 👤 Author
 
-MIT License
+**Harshan Aiyappa**
+
+- GitHub: [@Kimosabey](https://github.com/Kimosabey)
 
 ---
 
-**Built by**: [Harshan Aiyappa](https://github.com/Kimosabey)  
 **Tech Stack**: React • TypeScript • Chakra UI • Web Speech API  
 **Focus**: Language Learning • Voice Recognition • Real-time Feedback
+
