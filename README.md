@@ -18,90 +18,66 @@
 ![Voice Recognition](https://img.shields.io/badge/Feature-Voice_Recognition-FF6B6B?style=flat-square)
 ![Real-time Feedback](https://img.shields.io/badge/Feature-Real--time_Feedback-4ECDC4?style=flat-square)
 ![VAD](https://img.shields.io/badge/Feature-Voice_Activity_Detection-95E1D3?style=flat-square)
-![Cross-Platform](https://img.shields.io/badge/Platform-iOS_Safari_Optimized-F38181?style=flat-square)
+![PWA](https://img.shields.io/badge/Platform-Progressive_Web_App-F38181?style=flat-square)
 
 </div>
 
 ---
 
-## Visual Overview
+## 🚀 Quick Start
+
+### 1. Prerequisites
+- **Node.js (v18+)**
+- **Modern Browser** (Chrome 80+ / Safari 14.1+)
+- **Microphone Access** (HTTPS or localhost required)
+
+### 2. Installation
+```bash
+git clone https://github.com/Kimosabey/speak-flow.git
+cd speak-flow
+npm install
+```
+
+### 3. Start Development Server
+```bash
+npm run dev
+# Open http://localhost:5173 (Vite default)
+```
+
+**Note**: For mobile testing, ensure you are serving over HTTPS or using port forwarding, as microphone access is blocked on insecure HTTP origins.
+
+---
+
+## 📸 Screenshots
 
 ### Voice Waveform Interface
-
-<p align="center">
-  <img src="./docs/assets/architecture.png" alt="SpeakFlow Architecture" width="800"/>
-</p>
-
+![SpeakFlow Architecture](docs/assets/architecture.png)
 *Real-time voice activity detection with modern glassmorphism design*
 
 ### Pronunciation Feedback
-
-<p align="center">
-  <img src="./docs/assets/feedback.png" alt="Pronunciation Feedback" width="750"/>
-</p>
-
+![Pronunciation Feedback](docs/assets/feedback.png)
 *Instant feedback with phonetic analysis and similarity scoring*
 
 ---
 
-## Overview
+## ✨ Key Features
 
-**SpeakFlow** is a high-performance, interactive language learning application that combines real-time Voice Activity Detection (VAD) with Automatic Speech Recognition (ASR) to provide immediate, granular feedback on French pronunciation.
+### 🎙️ Advanced Audio Processing
+- **Intelligent VAD**: Dynamic background noise calibration ensures accurate speech detection irrespective of environment.
+- **Web Speech API**: Uses browser-native ASR for zero-latency transcription.
 
-### Mission
+### 🧠 Smart Feedback
+- **Phonetic Analysis**: Algorithms compare user input vs target using Levenshtein distance.
+- **Instant Correction**: Immediate visual cues on pronunciation accuracy.
 
-Provide a **frictionless, AI-powered environment** for practicing French phonetics, focusing on mastering the pronunciation and recognition of French months.
-
-### Key Features
-
-- **Intelligent VAD**: Dynamic background noise calibration ensures accurate speech detection in various environments
-- **Real-time Feedback**: Interactive mic visualizer provides instant interaction confirmation
-- **Pronunciation Analysis**: Leverages Levenshtein distance and fuzzy matching for nuanced evaluation
-- **Cross-Platform**: Tailored optimizations for iOS/Safari with full-height viewport fixes and audio context management
-- **Premium UI**: Modern glassmorphic design with fluid animations (Framer Motion)
-
----
-
-## Setup Instructions
-
-### Prerequisites
-- Node.js (v18+)
-- npm or yarn
-- Modern browser (Chrome 80+ or Safari 14.1+ for Web Speech API support)
-
-### Installation
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Kimosabey/speak-flow.git
-   cd speak-flow
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**:
-   ```bash
-   npm run dev
-   ```
-
-4. **Microphone Access**:
-   When prompted, allow microphone access. The application requires a **Secure Context (HTTPS)** or `localhost` to access the Web Speech API.
+### 📱 Excellence in UX
+- **Cross-Platform**: Optimized for iOS Safari (viewport fixes, audio context handling).
+- **Responsive**: Fluid layouts across all device sizes.
+- **Animations**: 60fps waveform visualizations using Framer Motion.
 
 ---
 
-## Architecture
-
-### Tech Stack
-- **Framework**: React 18
-- **Styling**: Chakra UI (Emotion)
-- **Animations**: Framer Motion
-- **Audio Engine**: Web Audio API (AnalyserNode)
-- **Speech Engine**: Web Speech API (SpeechRecognition)
-
-### Audio Processing Pipeline
+## 🏗️ Architecture
 
 ```mermaid
 graph LR
@@ -112,35 +88,49 @@ graph LR
     Feedback --> UI[Glassmorphic UI]
 ```
 
----
-
-## How It Works
-
-1. **Voice Capture**: Web Audio API captures audio with dynamic noise calibration
-2. **Activity Detection**: VAD algorithm detects speech vs. silence
-3. **Speech Recognition**: Web Speech API transcribes French pronunciation
-4. **Fuzzy Matching**: Levenshtein distance calculates pronunciation accuracy
-5. **Instant Feedback**: Visual and textual feedback with correction suggestions
+### Processing Pipeline
+1. **Voice Capture**: Web Audio API captures audio stream.
+2. **Activity Detection**: VAD filter distinguishes speech from silence.
+3. **Speech Recognition**: Browser API transcribes French.
+4. **Fuzzy Matching**: Algorithm calculates similarity score.
+5. **Feedback Loop**: UI updates immediately.
 
 ---
 
-## Cross-Platform Optimizations
+## 🔧 Tech Stack
 
-- **iOS/Safari**: Full-height viewport (`100dvh`) fixes
-- **Audio Context**: Proper initialization for mobile browsers
-- **Touch-first**: Optimized for mobile interaction patterns
-- **Responsive**: Fluid layouts across all device sizes
+| Component | Technology | Purpose |
+| :--- | :--- | :--- |
+| **Framework** | React 18 | Component-based UI logic |
+| **Language** | TypeScript | Type safety for audio buffers |
+| **Styling** | Chakra UI | Accessible component library |
+| **Animations** | Framer Motion | Smooth UI transitions |
+| **Audio** | Web Audio API | Low-level audio processing |
+
+---
+
+## 🚀 Future Enhancements
+
+- [ ] spaced repetition algorithm for difficult words (Anki-style).
+- [ ] Backend integration for storing user progress.
+- [ ] Multi-language support (Spanish, German).
+- [ ] Offline support via PWA Service Workers.
+
+---
+
+## 📝 License
+
+MIT License - See [LICENSE](./LICENSE) for details
 
 ---
 
 ## 👤 Author
 
-**Harshan Aiyappa**
-
-- GitHub: [@Kimosabey](https://github.com/Kimosabey)
+**Harshan Aiyappa**  
+Senior Full-Stack Engineer  
+📧 [GitHub](https://github.com/Kimosabey)
 
 ---
 
-**Tech Stack**: React • TypeScript • Chakra UI • Web Speech API  
-**Focus**: Language Learning • Voice Recognition • Real-time Feedback
-
+**Built with**: React • TypeScript • Web Audio API  
+**Focus**: Accessibility • Performance • Mobile-Optimization
