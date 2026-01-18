@@ -1,126 +1,83 @@
 # SpeakFlow
-## AI-Powered French Pronunciation Practice
+
+![Architecture](docs/assets/architecture.png)
+
+## AI-Powered French Pronunciation Coach
 
 <div align="center">
 
 ![Status](https://img.shields.io/badge/Status-Production_Ready-success?style=for-the-badge)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
-
-**Tech Stack**
-
-![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![Chakra UI](https://img.shields.io/badge/Chakra_UI-2-319795?style=for-the-badge&logo=chakraui&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-Animations-0055FF?style=for-the-badge&logo=framer&logoColor=white)
-
-**Features**
-
-![Voice Recognition](https://img.shields.io/badge/Feature-Voice_Recognition-FF6B6B?style=flat-square)
-![Real-time Feedback](https://img.shields.io/badge/Feature-Real--time_Feedback-4ECDC4?style=flat-square)
-![VAD](https://img.shields.io/badge/Feature-Voice_Activity_Detection-95E1D3?style=flat-square)
-![PWA](https://img.shields.io/badge/Platform-Progressive_Web_App-F38181?style=flat-square)
+![Privacy](https://img.shields.io/badge/Privacy-100%25_Device_Local-green?style=for-the-badge)
 
 </div>
+
+**SpeakFlow** is a zero-latency pronunciation trainer that runs entirely in the browser. By combining **Web Audio API** for signal processing and **Web Speech API** for recognition, it delivers instant feedback on French pronunciation without sending a single byte of audio to the cloud.
 
 ---
 
 ## 🚀 Quick Start
 
-### 1. Prerequisites
-- **Node.js (v18+)**
-- **Modern Browser** (Chrome 80+ / Safari 14.1+)
-- **Microphone Access** (HTTPS or localhost required)
+Run the PWA locally:
 
-### 2. Installation
 ```bash
-git clone https://github.com/Kimosabey/speak-flow.git
-cd speak-flow
+# 1. Install
 npm install
-```
 
-### 3. Start Development Server
-```bash
+# 2. Run
 npm run dev
-# Open http://localhost:5173 (Vite default)
 ```
 
-**Note**: For mobile testing, ensure you are serving over HTTPS or using port forwarding, as microphone access is blocked on insecure HTTP origins.
+> **Note on Mobile**: You must use HTTPS or `localhost` for microphone access. See [GETTING_STARTED.md](./docs/GETTING_STARTED.md).
 
 ---
 
-## 📸 Screenshots
+## 📸 Demo & Architecture
 
-### Voice Waveform Interface
-![SpeakFlow Architecture](docs/assets/architecture.png)
-*Real-time voice activity detection with modern glassmorphism design*
+### Real-time Visualization
+![Waveform](docs/assets/waveform.png)
+*60fps Audio Visualizer reacting to voice frequency*
 
-### Pronunciation Feedback
-![Pronunciation Feedback](docs/assets/feedback.png)
-*Instant feedback with phonetic analysis and similarity scoring*
+### Intelligent Feedback
+![Feedback](docs/assets/feedback.png)
+*Fuzzy matching algorithm grading pronunciation accuracy*
+
+### System Architecture
+![Architecture](docs/assets/architecture.png)
+*Client-Side flow: Mic -> VAD -> ASR -> Scoring Engine*
+
+> **Deep Dive**: See [ARCHITECTURE.md](./docs/ARCHITECTURE.md) for the VAD logic.
 
 ---
 
 ## ✨ Key Features
 
-### 🎙️ Advanced Audio Processing
-- **Intelligent VAD**: Dynamic background noise calibration ensures accurate speech detection irrespective of environment.
-- **Web Speech API**: Uses browser-native ASR for zero-latency transcription.
-
-### 🧠 Smart Feedback
-- **Phonetic Analysis**: Algorithms compare user input vs target using Levenshtein distance.
-- **Instant Correction**: Immediate visual cues on pronunciation accuracy.
-
-### 📱 Excellence in UX
-- **Cross-Platform**: Optimized for iOS Safari (viewport fixes, audio context handling).
-- **Responsive**: Fluid layouts across all device sizes.
-- **Animations**: 60fps waveform visualizations using Framer Motion.
+*   **⚡ Zero Latency**: All processing happens on-device. No server lag.
+*   **🔊 Smart VAD**: Auto-calibrates to background noise (Coffee Shop vs Library).
+*   **🎨 Glassmorphic UI**: Modern aesthetic built with Chakra UI and Framer Motion.
+*   **📱 PWA Ready**: Installable on iOS/Android for native-like experience.
 
 ---
 
-## 🏗️ Architecture
+## 📚 Documentation
 
-```mermaid
-graph LR
-    Mic[Microphone] --> VAD[Voice Activity Detection]
-    VAD --> ASR[Web Speech API]
-    ASR --> Analysis[Levenshtein Analysis]
-    Analysis --> Feedback[Real-time Feedback]
-    Feedback --> UI[Glassmorphic UI]
-```
-
-### Processing Pipeline
-1. **Voice Capture**: Web Audio API captures audio stream.
-2. **Activity Detection**: VAD filter distinguishes speech from silence.
-3. **Speech Recognition**: Browser API transcribes French.
-4. **Fuzzy Matching**: Algorithm calculates similarity score.
-5. **Feedback Loop**: UI updates immediately.
+| Document | Description |
+| :--- | :--- |
+| [**System Architecture**](./docs/ARCHITECTURE.md) | VAD Pipeline and Levenshtein Scoring. |
+| [**Getting Started**](./docs/GETTING_STARTED.md) | Local dev setup and Browser permissions. |
+| [**Failure Scenarios**](./docs/FAILURE_SCENARIOS.md) | Handling "Mic Blocked" and iOS Audio Context. |
+| [**Interview Q&A**](./docs/INTERVIEW_QA.md) | "Why Web Speech API?" and "React Performance". |
 
 ---
 
 ## 🔧 Tech Stack
 
-| Component | Technology | Purpose |
+| Component | Technology | Role |
 | :--- | :--- | :--- |
-| **Framework** | React 18 | Component-based UI logic |
-| **Language** | TypeScript | Type safety for audio buffers |
-| **Styling** | Chakra UI | Accessible component library |
-| **Animations** | Framer Motion | Smooth UI transitions |
-| **Audio** | Web Audio API | Low-level audio processing |
-
----
-
-## 🚀 Future Enhancements
-
-- [ ] spaced repetition algorithm for difficult words (Anki-style).
-- [ ] Backend integration for storing user progress.
-- [ ] Multi-language support (Spanish, German).
-- [ ] Offline support via PWA Service Workers.
-
----
-
-## 📝 License
-
-MIT License - See [LICENSE](./LICENSE) for details
+| **Logic** | **React 18 + TS** | State Machine. |
+| **Audio** | **Web Audio API** | Signal Processing (VAD). |
+| **AI** | **Web Speech API** | ASR (Recognition). |
+| **UI** | **Chakra UI** | Accessible Design. |
 
 ---
 
@@ -128,9 +85,10 @@ MIT License - See [LICENSE](./LICENSE) for details
 
 **Harshan Aiyappa**  
 Senior Full-Stack Engineer  
-📧 [GitHub](https://github.com/Kimosabey)
+[GitHub Profile](https://github.com/Kimosabey)
 
 ---
 
-**Built with**: React • TypeScript • Web Audio API  
-**Focus**: Accessibility • Performance • Mobile-Optimization
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
