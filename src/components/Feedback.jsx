@@ -1,0 +1,73 @@
+import React from 'react';
+import { Alert, AlertIcon, AlertDescription, Box, HStack, Text } from '@chakra-ui/react';
+import { AnimatePresence, motion } from 'framer-motion';
+
+const MotionBox = motion.create(Box);
+
+// A small, dedicated component to render a single colored word.
+const HighlightedWord = React.memo(({ word, color }) => {
+  const colorMap = {
+    green: 'green.500',
+    orange: 'orange.500',
+    red: 'red.500',
+  };
+  return (
+    <Text as="span" fontWeight="bold" color={colorMap[color] || 'slate.800'}>
+      {word}{' '}
+    </Text>
+  );
+});
+
+const Feedback = React.memo(({ message, type, highlightedPhrase }) => {
+  const getStatus = (type) => {
+    switch (type) {
+      case 'correct': return 'success';
+      case 'incorrect': return 'error';
+      case 'partial': return 'warning';
+      case 'warning': return 'warning';
+      default: return 'info';
+    }
+  };
+
+  return (
+    <AnimatePresence>
+      {message && (
+        <MotionBox
+          initial={{ opacity: 0, y: 20, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+        >
+          <Alert
+            status={getStatus(type)}
+            borderRadius="xl"
+            variant="subtle"
+            flexDirection="column"
+            alignItems="start"
+            p={{ base: 3, md: 4 }}
+          >
+            <HStack>
+              <AlertIcon />
+              <AlertDescription fontWeight="semibold">{message}</AlertDescription>
+            </HStack>
+
+            {highlightedPhrase && highlightedPhrase.length > 0 && type !== 'correct' && (
+              <Box mt={2} p={2} bg="blackAlpha.50" borderRadius="md" w="100%">
+                <Text fontSize={{ base: "2xs", md: "xs" }} color="slate.600" mb={1} fontWeight="medium">
+                  Pronunciation Analysis:
+                </Text>
+                <HStack wrap="wrap">
+                  {highlightedPhrase.map((wordInfo, index) => (
+                    <HighlightedWord key={index} word={wordInfo.word} color={wordInfo.color} />
+                  ))}
+                </HStack>
+              </Box>
+            )}
+          </Alert>
+        </MotionBox>
+      )}
+    </AnimatePresence>
+  );
+});
+
+export default Feedback;
