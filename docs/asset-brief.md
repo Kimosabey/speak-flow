@@ -1,20 +1,29 @@
 # Asset Brief — SpeakFlow
 
-**Primary color signature:** `#B6F400` (lime) · **Accent:** Blue-gray mesh `#93C5FD` → `#E5E7EB`
-**Visual tier:** Minimal illustration for hero; **Infographic** for architecture / waveform docs (labeled)
-**Domain motif:** Voice AI / speech-to-text — smooth **organic horizontal waveform** (not geometric); faint **mesh gradient** behind wave; minimal **circles + thin lines** at waveform ends (audio in/out).
-**Background:** Off-white `#F8F8F6` · **Depth:** spacious layout, 2–3 soft layers
+**Primary color signature:** `#B6F400` · **Accent:** `#93C5FD`
+**Visual tier:** Minimal illustration (Senior-5 thumbnails/heroes — no text, no logos, no UI chrome)
+**Domain motif:** Real-time acoustic analysis — organic horizontal waveform with mesh gradient and minimal I/O accents.
+**Background:** Off-white `#f6f6f5` for minimal assets · `#F5F5F4` if labeled infographic diagrams are added
 
 Save each to `docs/assets/<name>.png`. Site sync: `node kimo-nexus/scripts/sync-portfolio-assets.mjs`.
+Grid WebP: `kimo-nexus/public/projects/speak-flow.webp` (1280×640).
 
 | Asset | File | Size | Status |
 |---|---|---|---|
-| Thumbnail | `docs/assets/thumbnail.png` | 1280×640 | ✅ Legacy labeled diagram (1024²) |
+| Thumbnail | `docs/assets/thumbnail.png` | 1280×640 | ✅ Legacy labeled diagram (1024²) — regen to minimal tier queued |
 | Hero | `docs/assets/hero_main.png` | 1920×1080 | ✅ Shipped (minimal tier) |
 | Workflow | `docs/assets/workflow.png` | 1920×1080 | ⏳ Not generated |
 | Dashboard | `docs/assets/dashboard.png` | 1600×1000 | ⏳ Not generated |
-| Architecture | `docs/assets/architecture.png` | 1600×1000 | ✅ Also `waveform.png`, `feedback.png` |
+| Architecture | `docs/assets/architecture.png` | 1600×1000 | ✅ Also waveform.png, feedback.png |
 
-### Hero prompt (reference)
+### Thumbnail prompt (required — grid + README)
 
-Premium modern SaaS vector illustration, off-white `#F8F8F6`, no text/logos. Lime `#B6F400` organic waveform across center; faint blue-gray mesh gradient behind; small geometric I/O accents at ends. Voice AI platform, soft depth.
+Minimal SaaS illustration, light theme, off-white background (#f6f6f5), vector graphic, soft depth, zero text, zero logos, zero UI chrome. **#B6F400** primary + **#93C5FD** accent. Lime organic waveform across center with faint blue-gray mesh gradient; geometric I/O accents at ends.
+
+### Hero / minimal illustration prompt
+
+Minimal SaaS illustration, light theme, off-white background (#f6f6f5), vector graphic, soft depth, zero text, zero logos, zero UI chrome. **#B6F400** primary + **#93C5FD** accent. Lime organic waveform across center with faint blue-gray mesh gradient; geometric I/O accents at ends. Spacious composition, Stripe/Linear aesthetic.
+
+### Infographic prompt seed (architecture — if labeled)
+
+Modern premium acoustic analysis infographic, light background `#F5F5F4`, **#B6F400** primary + **#93C5FD** accent, Inter font, rounded cards, soft shadows. Exact labels only — no placeholder text.
